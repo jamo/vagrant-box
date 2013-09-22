@@ -103,8 +103,10 @@ Vagrant::Config.run do |config|
       postgresql: {
         listen_addresses: "*",
         pg_hba: [
-            "host all all 0.0.0.0/0 md5",
-            "host all all ::1/0 md5",
+            "local all postgres peer",
+            "local  all  all  md5",
+            "host   all  all  127.0.0.1/32  md5",
+            "host   all  all  ::1/128       md5",
         ],
         users: [
           {
